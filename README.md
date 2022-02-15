@@ -1,2 +1,9 @@
 # tvk_demo_node_api_service
-Demo for provide API service. Base on NodeJS
+1. First setup
+npm install
+cd cline
+npm install
+
+2. Run command
+server run: npm run dev (in root folder)
+client run: npm start (in client folder)

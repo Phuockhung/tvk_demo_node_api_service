@@ -1,0 +1,13 @@
+1. init server
+npm init -y
+npm i express mongoose dotenv cors morgan cookie-parser bcrypt jsonwebtoken 
+npm i -D @types/express @types/mongoose @types/dotenv @types/cors @types/morgan @types/cookie-parser @types/bcrypt @types/jsonwebtoken 
+npm i -D typescript ts-node-dev @types/node
+npx tsc --init
+
+2. init client
+npx create-react-app client --template typescript
+npm i -D nodemon
+npm i react-router-dom axios redux redux-thunk react-redux redux-devtools-extension
+
+move to folder client run command: npm i react-router-dom axios react-paypal-express-checkout
