@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { RootStore, IBlog, IUser } from '../utils/TypeScript'
 import { validCreateBlog, shallowEqual } from '../utils/Valid'
@@ -128,12 +129,20 @@ const CreateBlog: React.FC<IProps> = ({id}) => {
         __html: body
       }} style={{display: 'none'}} />
 
-      <small>{text.length}</small>
+      <small>Number character {text.length}</small>
       
-      <button className="btn btn-dark mt-3 d-block mx-auto"
+      {/* <button className="btn btn-dark mt-3 d-block mx-auto"
       onClick={handleSubmit}>
         { id ? 'Update Post' : 'Create Post' }
-      </button>
+      </button> */}
+
+      <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+        <button className="btn btn-dark mt-3" type="button"
+          onClick={handleSubmit}>
+          { id ? 'Update Post' : 'Create Post' }
+        </button>
+        <Link to={`/`} className="btn btn-dark mt-3">Cancel</Link>
+      </div>
     </div>
   )
 }

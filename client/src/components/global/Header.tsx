@@ -15,7 +15,6 @@ const Header = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <Search />
           <Menu />
         </div>
     </nav>

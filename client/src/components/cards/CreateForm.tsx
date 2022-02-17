@@ -31,7 +31,7 @@ const CreateForm: React.FC<IProps> = ({blog, setBlog}) => {
       <div className="form-group position-relative">
         <input type="text" className="form-control"
         value={blog.title} name="title" 
-        onChange={handleChangeInput} />
+        onChange={handleChangeInput} placeholder="Title"/>
 
         <small className="text-muted position-absolute"
         style={{ bottom: 0, right: '3px', opacity: '0.3'}}>
@@ -47,7 +47,7 @@ const CreateForm: React.FC<IProps> = ({blog, setBlog}) => {
       <div className="form-group position-relative">
         <textarea className="form-control" rows={4}
         value={blog.description} style={{resize: 'none'}}
-        name="description" onChange={handleChangeInput} />
+        name="description" onChange={handleChangeInput} placeholder="Description"/>
 
         <small className="text-muted position-absolute"
         style={{ bottom: 0, right: '3px', opacity: '0.3'}}>

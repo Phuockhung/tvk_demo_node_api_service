@@ -1,15 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
     <div className="text-center bg-light py-4">
       <h6>Welcome my Blog</h6>
-      <a href="https:/phuockhung.asia" 
+      <Link to={`/`}
       target="_blank" rel="noreferrer"
       className="mb-2 d-block">
-        https://phuockhung.asia
-      </a>
-      <p> Copyright &copy; 2021</p>
+         https://demo-blog-tvk.herokuapp.com/
+      </Link>
+      <p> Copyright &copy; 2022</p>
     </div>
   )
 }

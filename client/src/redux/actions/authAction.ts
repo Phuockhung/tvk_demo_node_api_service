@@ -17,7 +17,7 @@ async (dispatch: Dispatch<IAuthType | IAlertType>) => {
     dispatch({ type: AUTH,payload: res.data })
 
     dispatch({ type: ALERT, payload: { success: res.data.msg } })
-    localStorage.setItem('logged', 'devat-channel')
+    localStorage.setItem('logged', 'phuockhung')
     
   } catch (err: any) {
     dispatch({ type: ALERT, payload: { errors: err.response.data.msg } })
@@ -38,6 +38,7 @@ async (dispatch: Dispatch<IAuthType | IAlertType>) => {
     const res = await postAPI('register', userRegister)
 
     dispatch({ type: ALERT, payload: { success: res.data.msg } })
+    window.location.href = "/login"
   } catch (err: any) {
     dispatch({ type: ALERT, payload: { errors: err.response.data.msg } })
   }
@@ -47,7 +48,7 @@ async (dispatch: Dispatch<IAuthType | IAlertType>) => {
 export const refreshToken = () => 
 async (dispatch: Dispatch<IAuthType | IAlertType>) => {
   const logged = localStorage.getItem('logged')
-  if(logged !== 'devat-channel') return;
+  if(logged !== 'phuockhung') return;
 
   try {
     dispatch({ type: ALERT, payload: { loading: true } })
@@ -110,7 +111,7 @@ export const verifySMS = async (
       dispatch({ type: AUTH,payload: res.data })
 
       dispatch({ type: ALERT, payload: { success: res.data.msg } })
-      localStorage.setItem('logged', 'devat-channel')
+      localStorage.setItem('logged', 'phuockhung')
     } catch (err: any) {
       dispatch({ type: ALERT, payload: { errors: err.response.data.msg } })
       setTimeout(() => {
