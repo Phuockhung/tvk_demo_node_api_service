@@ -38,6 +38,7 @@ async (dispatch: Dispatch<IAuthType | IAlertType>) => {
     const res = await postAPI('register', userRegister)
 
     dispatch({ type: ALERT, payload: { success: res.data.msg } })
+    window.location.href = "/login"
   } catch (err: any) {
     dispatch({ type: ALERT, payload: { errors: err.response.data.msg } })
   }
