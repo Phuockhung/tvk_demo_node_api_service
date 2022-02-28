@@ -45,7 +45,20 @@ const blogCtrl = {
             pipeline: [
               { $match: { $expr: { $eq: ["$_id", "$$user_id"] } } },
               { $project: { password: 0 } },
-              { $project: { _id: 1, name: 1, account: 1, avatar: 1 } },
+              {
+                $set: {
+                  displayName: { $concat: ["$name", " (", "$role", ")"] },
+                },
+              },
+              {
+                $project: {
+                  _id: 1,
+                  name: 1,
+                  account: 1,
+                  avatar: 1,
+                  displayName: 1,
+                },
+              },
             ],
             as: "user",
           },
