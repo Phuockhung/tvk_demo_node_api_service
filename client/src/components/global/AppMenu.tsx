@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../utils/TypeScript";
 import { logout } from "../../redux/actions/authAction";
 
-const Menu = () => {
+const AppMenu = () => {
   const { auth } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -75,4 +75,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default AppMenu;
