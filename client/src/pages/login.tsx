@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import LoginPass from '../components/auth/LoginPass'
+import LoginPass from "../components/auth/LoginPass";
 
-import { RootStore } from '../utils/TypeScript'
+import { RootStore } from "../utils/TypeScript";
 
 const Login = () => {
-  const history = useHistory()
+  const history = useHistory();
 
-  const { auth } = useSelector((state: RootStore) => state)
+  const { auth } = useSelector((state: RootStore) => state);
 
   useEffect(() => {
-    if(auth.access_token) history.push('/')
-  },[auth.access_token, history])
+    if (auth.access_token) history.push("/");
+  }, [auth.access_token, history]);
 
   return (
     <div className="auth_page">
@@ -22,24 +22,21 @@ const Login = () => {
 
         <LoginPass />
 
-        <small className="row my-2 text-primary" style={{cursor: 'pointer'}}>
+        <span className="row my-2 text-primary" style={{ cursor: "pointer" }}>
           <span className="col-6">
-            <Link to='/forgot_password'>
-              Forgot password?
-            </Link>
+            <Link to="/forgot_password">Forgot password?</Link>
           </span>
-        </small>
+        </span>
 
         <p>
           {`You don't have an account? `}
-          <Link to={`/register`} style={{color: 'crimson'}}>
+          <Link to={`/register`} style={{ color: "crimson" }}>
             Register Now
           </Link>
         </p>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
