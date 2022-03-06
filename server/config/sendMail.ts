@@ -2,7 +2,6 @@ const nodemailer = require("nodemailer");
 import { OAuth2Client } from "google-auth-library";
 
 const OAUTH_PLAYGROUND = "https://developers.google.com/oauthplayground";
-
 const CLIENT_ID = `${process.env.MAIL_CLIENT_ID}`;
 const CLIENT_SECRET = `${process.env.MAIL_CLIENT_SECRET}`;
 const REFRESH_TOKEN = `${process.env.MAIL_REFRESH_TOKEN}`;
@@ -15,12 +14,9 @@ const sendEmail = async (to: string, url: string, txt: string) => {
     CLIENT_SECRET,
     OAUTH_PLAYGROUND
   );
-
   oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-
   try {
     const access_token = await oAuth2Client.getAccessToken();
-
     const transport = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -32,7 +28,6 @@ const sendEmail = async (to: string, url: string, txt: string) => {
         access_token,
       },
     });
-
     const mailOptions = {
       from: SENDER_MAIL,
       to: to,
@@ -52,7 +47,6 @@ const sendEmail = async (to: string, url: string, txt: string) => {
               </div>
             `,
     };
-
     const result = await transport.sendMail(mailOptions);
     return result;
   } catch (err) {

@@ -5,7 +5,6 @@ import NotFound from "./components/global/NotFound";
 
 const generatePage = (name: string) => {
   const component = () => require(`./pages/${name}`).default;
-
   try {
     return React.createElement(component());
   } catch (err) {
@@ -15,13 +14,10 @@ const generatePage = (name: string) => {
 
 const PageRender = () => {
   const { page, slug }: IParams = useParams();
-
   let name = "";
-
   if (page) {
     name = slug ? `${page}/[slug]` : `${page}`;
   }
-
   return generatePage(name);
 };
 

@@ -49,7 +49,6 @@ const AppMenu = () => {
           >
             <img src={auth.user.avatar} alt="avatar" className="avatar" />
           </span>
-
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
               <Link className="dropdown-item" to={`/profile/${auth.user._id}`}>

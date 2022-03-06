@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Loading = () => {
   return (
     <div className="d-flex justify-content-center my-4">
@@ -7,7 +5,7 @@ const Loading = () => {
         <span className="visually-hidden">Loading...</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Loading
+export default Loading;

@@ -1,21 +1,16 @@
-import { IUser } from '../../utils/TypeScript'
-import {
-  GET_OTHER_INFO,
-  IGetOtherInfoType
-} from '../types/profileType'
-
+import { IUser } from "../../utils/TypeScript";
+import { GET_OTHER_INFO, IGetOtherInfoType } from "../types/profileType";
 
 const otherInfoReducer = (
   state: IUser[] = [],
   action: IGetOtherInfoType
 ): IUser[] => {
-  switch(action.type){
+  switch (action.type) {
     case GET_OTHER_INFO:
-      return [...state, action.payload]
-
+      return [...state, action.payload];
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default otherInfoReducer
+export default otherInfoReducer;

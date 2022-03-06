@@ -1,24 +1,21 @@
-import { Twilio } from 'twilio'
+import { Twilio } from "twilio";
 
 const accountSid = `${process.env.TWILIO_ACCOUNT_SID}`;
 const authToken = `${process.env.TWILIO_AUTH_TOKEN}`;
 const from = `${process.env.TWILIO_PHONE_NUMBER}`;
 const serviceID = `${process.env.TWILIO_SERVICE_ID}`;
-
-const client = new Twilio(accountSid, authToken)
-
+const client = new Twilio(accountSid, authToken);
 
 export const sendSms = (to: string, body: string, txt: string) => {
   try {
     client.messages
-    .create({
-      body: `PhuocKhung ${txt} - ${body}`,
-      from,
-      to
-    })
-    .then(message => console.log(message.sid));
-
+      .create({
+        body: `PhuocKhung ${txt} - ${body}`,
+        from,
+        to,
+      })
+      .then((message) => console.log(message.sid));
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-}
+};

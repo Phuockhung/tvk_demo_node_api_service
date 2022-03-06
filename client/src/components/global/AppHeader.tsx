@@ -1,15 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import Search from "./Search";
 import AppMenu from "./AppMenu";
 
 const AppHeader = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light p-3">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light ps-3 pe-3">
       <Link className="navbar-brand" to="/">
-        Demo
+        <h4>Ryan's Blog</h4>
       </Link>
-
       <button
         className="navbar-toggler"
         type="button"
@@ -21,7 +18,6 @@ const AppHeader = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-
       <div className="collapse navbar-collapse" id="navbarNav">
         <AppMenu />
       </div>

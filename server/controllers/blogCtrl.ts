@@ -7,7 +7,6 @@ const Pagination = (req: IReqAuth) => {
   let page = Number(req.query.page) * 1 || 1;
   let limit = Number(req.query.limit) * 1 || 4;
   let skip = (page - 1) * limit;
-
   return { page, limit, skip };
 };
 
@@ -15,10 +14,8 @@ const blogCtrl = {
   createBlog: async (req: IReqAuth, res: Response) => {
     if (!req.user)
       return res.status(400).json({ msg: "Invalid Authentication." });
-
     try {
       const { title, content, description, thumbnail, category } = req.body;
-
       const newBlog = new Blogs({
         user: req.user._id,
         title,
@@ -27,7 +24,6 @@ const blogCtrl = {
         thumbnail,
         category,
       });
-
       await newBlog.save();
       res.json({ newBlog });
     } catch (err: any) {
@@ -98,7 +94,6 @@ const blogCtrl = {
           },
         },
       ]);
-
       res.json(blogs);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
@@ -106,7 +101,6 @@ const blogCtrl = {
   },
   getBlogsByCategory: async (req: Request, res: Response) => {
     const { limit, skip } = Pagination(req);
-
     try {
       const Data = await Blogs.aggregate([
         {
@@ -153,19 +147,15 @@ const blogCtrl = {
           },
         },
       ]);
-
       const blogs = Data[0].totalData;
       const count = Data[0].count;
-
       // Pagination
       let total = 0;
-
       if (count % limit === 0) {
         total = count / limit;
       } else {
         total = Math.floor(count / limit) + 1;
       }
-
       res.json({ blogs, total });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
@@ -173,7 +163,6 @@ const blogCtrl = {
   },
   getBlogsByUser: async (req: Request, res: Response) => {
     const { limit, skip } = Pagination(req);
-
     try {
       const Data = await Blogs.aggregate([
         {
@@ -220,19 +209,15 @@ const blogCtrl = {
           },
         },
       ]);
-
       const blogs = Data[0].totalData;
       const count = Data[0].count;
-
       // Pagination
       let total = 0;
-
       if (count % limit === 0) {
         total = count / limit;
       } else {
         total = Math.floor(count / limit) + 1;
       }
-
       res.json({ blogs, total });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
@@ -244,9 +229,7 @@ const blogCtrl = {
         "user",
         "-password"
       );
-
       if (!blog) return res.status(400).json({ msg: "Blog does not exist." });
-
       return res.json(blog);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
@@ -255,7 +238,6 @@ const blogCtrl = {
   updateBlog: async (req: IReqAuth, res: Response) => {
     if (!req.user)
       return res.status(400).json({ msg: "Invalid Authentication." });
-
     try {
       const blog = await Blogs.findOneAndUpdate(
         {
@@ -264,10 +246,8 @@ const blogCtrl = {
         },
         req.body
       );
-
       if (!blog)
         return res.status(400).json({ msg: "Invalid Authentication." });
-
       res.json({ msg: "Update Success!", blog });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
@@ -276,17 +256,14 @@ const blogCtrl = {
   deleteBlog: async (req: IReqAuth, res: Response) => {
     if (!req.user)
       return res.status(400).json({ msg: "Invalid Authentication." });
-
     try {
       // Delete Blog
       const blog = await Blogs.findOneAndDelete({
         _id: req.params.id,
         user: req.user._id,
       });
-
       if (!blog)
         return res.status(400).json({ msg: "Invalid Authentication." });
-
       res.json({ msg: "Delete Success!" });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });

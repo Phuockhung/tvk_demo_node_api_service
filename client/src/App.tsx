@@ -9,6 +9,9 @@ import { refreshToken } from "./redux/actions/authAction";
 import { getCategories } from "./redux/actions/categoryAction";
 import { getHomeBlogs } from "./redux/actions/blogAction";
 import "antd/dist/antd.css";
+import { Layout } from "antd";
+
+const { Header, Content, Footer } = Layout;
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,18 +22,24 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="container">
+    <Layout className="container mainLayout">
       <Router>
         <Alert />
-        <AppHeader />
-        <Switch>
-          <Route exact path="/" component={PageRender} />
-          <Route exact path="/:page" component={PageRender} />
-          <Route exact path="/:page/:slug" component={PageRender} />
-        </Switch>
-        <AppFooter />
+        <Header>
+          <AppHeader />
+        </Header>
+        <Content>
+          <Switch>
+            <Route exact path="/" component={PageRender} />
+            <Route exact path="/:page" component={PageRender} />
+            <Route exact path="/:page/:slug" component={PageRender} />
+          </Switch>
+        </Content>
+        <Footer>
+          <AppFooter />
+        </Footer>
       </Router>
-    </div>
+    </Layout>
   );
 };
 
